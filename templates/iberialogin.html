@@ -1,0 +1,38 @@
+<html>
+<head>
+      <title>Flask Intro - login page</title>
+      <link rel="stylesheet" href="static/styles2.css">
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body background="static/img/airport.jpg">
+<!-- <body onload="TeamPage()"> -->
+    <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">  
+      <br>
+    <!--<img src="static/img/GitHub-Logo.png" class="logo-image card-img-top img" id="icon" alt="User Icon" /> -->
+      <a  href="http://www.es.iairgroup.com/phoenix.zhtml?c=240950&p=index" target="_blank" ><img class="logo-image card-img-top img" id="icon" alt="User Icon" src="static/img/LOGO_IAG_cut.png"></a>
+    </div>
+    <br>
+
+    <!-- Login Form -->
+    <form action="" method="post">
+                <input type="text" placeholder="Username" name="username" value="{{
+                  request.form.username }}">
+                 <input type="password" placeholder="Password" name="password" value="{{
+                  request.form.password }}">
+                <input class="btn btn-primary" type="submit" value="Login">
+    </form>
+            {% if error %}
+                <p class="error"><strong>Error:</strong> {{ error }}
+              {% endif %}
+    </div>
+</div>
+  </body>
+
+</html>

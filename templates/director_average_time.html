@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<title>My Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    html,body,h1,h2,h3,h4,h5 {font-family: "Arial, Helvetica"}
+    </style>
+<body onload="getAll()">
+
+    <!-- Top container -->
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block" style="width:260px;background-color:#e5e5e5; margin-left: 10px" id="mySidebar"><br>
+  <a href="{{ url_for('director') }}"><img src="static/img/LOGO_IAG_cut.png" style="width:150px; height:86px; margin-left: 45px" ></a>          
+  <br>
+  <br>
+
+    <div class="w3-container w3-row">
+
+      <div class="w3-col s8 w3-bar">
+          <h4> <span style="margin-left:55px">Welcome</span></h4>
+          <h4> <span style="margin-left:40px"><strong>DIRECTOR</strong></span><br></h4>
+
+        <a style="padding-left:60px" href="{{ url_for('logout')}}" class="w3-bar-item w3-button"> Sign out <i class="fa fa-sign-out"></i></a>
+      </div>
+    </div>
+    <hr>
+    <div class="w3-container">
+      <h4>DASHBOARD</h4>
+    </div>
+    <div class="w3-bar-block">
+      <a href="{{ url_for('director') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye"></i>    Availability</a>
+      <a href="{{ url_for('director_average_time') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-hourglass-half"></i>    Average Time to Resolution</a>
+      <a href="" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullhorn"></i>    Number of Incidences</a>
+      <a href="" class="w3-bar-item w3-button w3-padding"><i class="fa fa-repeat"></i>     Reliability</a>
+      <a href="" class="w3-bar-item w3-button w3-padding"><i class="	fa fa-th-list"></i>     Backlog</a>
+
+    </div>
+  </nav>
+  <!-- End Sidebar/menu -->
+
+  <!-- !PAGE CONTENT! -->
+<div id="main" class="w3-main" style="margin-left:300px;margin-top:10px;margin-top:10px">
+
+    <!-- Header -->
+    <header class="w3-container" style="padding-top:22px">
+      <h4><b><i class="fa fa-bar-chart"></i> PERFORMANCE RELATED TO RESOLUTION TIMES</b></h4>
+      <h5><i></i> January - June</h5>
+
+    </header>
+
+  <!-- Square boxes -->
+    <div class="w3-row-padding w3-margin-bottom">
+        <hr style="margin-right:15px">
+        <div class="w3-display-container" style="height:500px; margin-right: 15px;border:none" frameBorder="none">
+            <iframe src="https://dash-11.herokuapp.com/" style="width:100%; height:500px;" frameBorder="0" alt="Graph-incs-per-serv-sla"></iframe>
+    
+        </div>
+        
+
+        <hr style="margin-right:15px">
+        <div class="w3-display-container" style="height:500px; margin-right: 15px;border:none" frameBorder="none">
+            <iframe src="https://dash-12.herokuapp.com/" style="width:100%; height:100vmax;" frameBorder="0" alt="Graph-incs-per-serv-sla"></iframe>
+    
+        </div>
+
+    
+    <hr style="margin-right:15px">
+    <div class="w3-display-container" style="height:500px; margin-right: 15px;border:none" frameBorder="none">
+        <iframe src="https://dash-01-03.herokuapp.com/02-app-layout-average-resolution-per-service-days" style="width:100%; height:100vmax;" frameBorder="0" alt="Graph-incs-per-serv-sla"></iframe>
+
+    </div>
+    <hr style="margin-right:15px">
+
+    <div class="w3-display-container" style="height:500px; margin-right: 15px;border:none" frameBorder="none">
+        <iframe src="https://dash-01-03.herokuapp.com/03-app-layout-average-resolution-per-service-hours" style="width:100%; height:100vmax;" frameBorder="0" alt="Graph-incs-per-serv-sla"></iframe>
+
+    </div>
+    <hr style="margin-right:15px">
+
+
+    <div class="w3-display-container" style="height:700px; margin-right: 15px;border:none" frameBorder="none">
+        <iframe src="https://dash-13.herokuapp.com/" style="width:100%; height:100vmax;" frameBorder="0" alt="Graph-incs-per-serv-sla"></iframe>
+
+    </div>
+
+    <hr style="margin-right:15px">
+
+
+    <div class="w3-display-container" style="height:700px; margin-right: 15px;border:none" frameBorder="none">
+        <iframe src="https://dash-18.herokuapp.com/" style="width:100%; height:100vmax;" frameBorder="0" alt="Graph-incs-per-serv-sla"></iframe>
+
+    </div>
+    <hr style="margin-right:15px">
+
+    
+    <!-- End squared boxes -->
+    <script>
+
+    const getJsonCom = () => {
+        fetch("https://integration-project-ie.herokuapp.com//availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#com").innerHTML = (response[0]['Service']))
+        };
+    
+    const getJsonComAvail = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#com-avail").innerHTML = (response[0]['Availability'] + " %"))
+        };
+    
+        const getJsonCheckin = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#checkin").innerHTML = (response[1]['Service']))
+        };
+        const getJsonCheckinAvail = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#checkin-avail").innerHTML = (response[1]['Availability']+ " %"))
+        };
+    
+        const getJsonCrew = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#crew").innerHTML = (response[2]['Service']))
+        };
+    
+        const getJsonCrewAvail = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#crew-avail").innerHTML = (response[2]['Availability']+ " %"))
+        };
+    
+        const getJsonFlightDispatch = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#flightdispatch").innerHTML = (response[3]['Service']))
+        };
+    
+        const getJsonFlightDispatchAvail = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#flightdispatch-avail").innerHTML = (response[3]['Availability']+ " %"))
+        };
+    
+        const getJsonFlightTracking = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#flighttracking").innerHTML = (response[4]['Service']))
+        };
+        
+        const getJsonFlightTrackingAvail = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#flighttracking-avail").innerHTML = (response[4]['Availability']+ " %"))
+        };
+    
+        const getJsonMadHub = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#madhub").innerHTML = (response[5]['Service']))
+        };
+        
+        const getJsonMadHubAvail = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#madhub-avail").innerHTML = (response[5]['Availability']+ " %"))
+        };
+        
+        const getJsonOps = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#ops").innerHTML = (response[6]['Service']))
+        };
+    
+        const getJsonOpsAvail = () => {
+        fetch("https://integration-project-ie.herokuapp.com/availability")
+          .then(response => response.json())
+          .then(response => document.querySelector("#ops-avail").innerHTML = (response[6]['Availability']+ " %"))
+        };
+    
+        const getAll = () => {
+          getJsonCom();
+          getJsonComAvail();
+          getJsonCheckin();
+          getJsonCheckinAvail();
+          getJsonCrew();
+          getJsonCrewAvail();
+          getJsonFlightDispatch();
+          getJsonFlightDispatchAvail();
+          getJsonFlightTracking()
+          getJsonFlightTrackingAvail();
+          getJsonMadHub();
+          getJsonMadHubAvail();
+          getJsonOps();
+          getJsonOpsAvail()
+        }
+
+        </script>
+</body>
+</html>
