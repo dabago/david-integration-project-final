@@ -54,35 +54,38 @@
 
     <!-- Header -->
     <header class="w3-container" style="padding-top:22px">
-      <h4><b><i class="fa fa-bar-chart"></i> PERFORMANCE RELATED TO INCIDENCES</b></h4>
+      <h4><b><i class="fa fa-bar-chart"></i> RAW DATA RELATED TO CRITICAL INCIDENCES</b></h4>
       <h5><i></i> January - June</h5>
 
     </header>
-
-  <!-- Square boxes -->
+    <div class="d-flex justify-content-center form_container">
+      <form action="https://integration-project-ie.herokuapp.com/query" method="POST">
+        <div class="input-group mb-3">
+          <div class="input-group-append">
+            <span class="input-group-text"></span>
+          </div>
+          <h4>Incident ID</h4>
+          <input type="text" name="incident-id" class="form-control input_pass" value="" placeholder="incident-id">
+        <div class="input-group mb-2">
+          <div class="input-group-append">
+            <span class="input-group-text"></span>
+          </div>
+          <h4>Status</h4>
+          <input type="text" name="status" class="form-control input_user" value="" placeholder="status">
+        </div>
+        <div class="d-flex justify-content-center mt-3 login_container">
+          <button type="submit" name="button" class="btn login_btn">Update</button>
+        </div>
+      </form>
+    </div>
+<!-- Square boxes -->
     <div class="w3-row-padding w3-margin-bottom">
         <hr style="margin-right:15px">
         
         <div class="w3-display-container" style="height:700px; margin-right: 15px;border:none" frameBorder="none">
-            <iframe src="https://dash-15.herokuapp.com/" style="width:100%; height:100vmax;" frameBorder="0" alt="Graph-incs-per-serv-sla"></iframe>
+          <iframe src="https://dashjavier.herokuapp.com/table-low" style="width:100%; height:700px;" frameBorder = '0' alt="Table-crit-by-app"></iframe>
     
         </div>
-        <hr style="margin-right:15px">
-    
-
-        <div class="w3-display-container" style="height:700px; margin-right: 15px;border:none" frameBorder="none">
-            <iframe src="https://dash-deploy-19.herokuapp.com/" style="width:100%; height:100vmax;" frameBorder="0" alt="Graph-incs-per-serv-sla"></iframe>
-    
-        </div>
-        
-
-
-    
-    <hr style="margin-right:15px">
-    <div class="w3-display-container" style="height:700px; margin-right: 15px;border:none" frameBorder="none">
-        <iframe src="https://dash-17.herokuapp.com/" style="width:100%; height:100vmax;" frameBorder="0" alt="Graph-incs-per-serv-sla"></iframe>
-
-    </div>
 
     <hr style="margin-right:15px">
 

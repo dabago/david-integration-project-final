@@ -117,6 +117,26 @@ def manager_average_time():
 def manager_number_of_incidences():
     return render_template('manager_number_of_incidences.html')
 
+@app.route('/manager_table_critical')
+@login_required
+def manager_table_critical():
+    return render_template('manager_table_critical.html')
+
+@app.route('/manager_table_high')
+@login_required
+def manager_table_high():
+    return render_template('manager_table_high.html')
+
+@app.route('/manager_table_medium')
+@login_required
+def manager_table_medium():
+    return render_template('manager_table_medium.html')
+
+@app.route('/manager_table_low')
+@login_required
+def manager_table_low():
+    return render_template('manager_table_low.html')
+
 
 
 
