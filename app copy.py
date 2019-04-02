@@ -198,12 +198,12 @@ def update_record():
         port=3306,
         database='root')
     
-    status = request.form['mttr']
+    status = request.form['status']
     incident_id = request.form['incident-id']
     
     # prepare query and data
     query = """ UPDATE ultrasincomas
-                SET `MTTR general` = %s
+                SET Status = %s
                 WHERE `Incident ID` = %s """
  
     data = (status, incident_id)
@@ -212,7 +212,7 @@ def update_record():
     cursor.execute(query, data)
     
     conn.commit()
-    return redirect(url_for('manager_table_critical'))
+    return redirect(url_for('manager'))
 # start the server
 if __name__ == '__main__':
     app.run(debug=True)

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
-    html,body,h1,h2,h3,h4,h5 {font-family: "Arial, Helvetica"}
+    html,body,h1,h2,h3,h4,h5 {font-family: "Helvetica"}
     </style>
 <body onload="getAll()">
 
@@ -41,6 +41,8 @@
       <a href="{{ url_for('manager_number_of_incidences') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullhorn"></i>    Number of Incidences</a>
       <a href="{{ url_for('manager_table_critical') }}" class="w3-bar-item w3-button w3-padding"><i class="	fa fa-edit"></i>    Detailed Incidences | Critical</a>
       <a href="{{ url_for('manager_table_high') }}" class="w3-bar-item w3-button w3-padding"><i class="	fa fa-edit"></i>    Detailed Incidences | High</a>
+      <a href="{{ url_for('manager_table_medium') }}" class="w3-bar-item w3-button w3-padding"><i class="	fa fa-edit"></i>    Detailed Incidences | Medium</a>
+      <a href="{{ url_for('manager_table_low') }}" class="w3-bar-item w3-button w3-padding"><i class="	fa fa-edit"></i>    Detailed Incidences | Low</a>
       <a href="" class="w3-bar-item w3-button w3-padding"><i class="fa fa-repeat"></i>     Reliability</a>
       <a href="" class="w3-bar-item w3-button w3-padding"><i class="	fa fa-th-list"></i>     Backlog</a>
     </div>
@@ -57,7 +59,7 @@
 
     </header>
     <div class="d-flex justify-content-center form_container">
-      <form action="https://integration-project-ie.herokuapp.com/query" method="POST">
+      <form action="{{ url_for('update_record')}}" method="POST">
         <div class="input-group mb-3">
           <div class="input-group-append">
             <span class="input-group-text"></span>
@@ -68,8 +70,8 @@
           <div class="input-group-append">
             <span class="input-group-text"></span>
           </div>
-          <h4>Status</h4>
-          <input type="text" name="status" class="form-control input_user" value="" placeholder="status">
+          <h4>MTTR general</h4>
+          <input type="text" name="mttr" class="form-control input_user" value="" placeholder="X days hh:mm:ss">
         </div>
         <div class="d-flex justify-content-center mt-3 login_container">
           <button type="submit" name="button" class="btn login_btn">Update</button>

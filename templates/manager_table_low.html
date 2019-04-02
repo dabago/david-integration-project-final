@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
-    html,body,h1,h2,h3,h4,h5 {font-family: "Arial, Helvetica"}
+    html,body,h1,h2,h3,h4,h5 {font-family: "Helvetica"}
     </style>
 <body onload="getAll()">
 
@@ -59,7 +59,7 @@
 
     </header>
     <div class="d-flex justify-content-center form_container">
-      <form action="https://integration-project-ie.herokuapp.com/query" method="POST">
+      <form action="{{ url_for('update_record')}}" method="POST">
         <div class="input-group mb-3">
           <div class="input-group-append">
             <span class="input-group-text"></span>
@@ -70,8 +70,8 @@
           <div class="input-group-append">
             <span class="input-group-text"></span>
           </div>
-          <h4>Status</h4>
-          <input type="text" name="status" class="form-control input_user" value="" placeholder="status">
+          <h4>MTTR general</h4>
+          <input type="text" name="mttr" class="form-control input_user" value="" placeholder="X days hh:mm:ss">
         </div>
         <div class="d-flex justify-content-center mt-3 login_container">
           <button type="submit" name="button" class="btn login_btn">Update</button>
