@@ -192,11 +192,11 @@ def availability():
 def update_record():
     # read database configuration
     conn = mysql.connector.connect(
-        user='root', 
-        password='password',
-        host='dbinstance.cx9nlstfg2vl.us-east-1.rds.amazonaws.com',
-        port=3306,
-        database='root')
+    user='dabago', 
+    password='integration',
+    host='db.cqpvfmmecqgi.us-east-1.rds.amazonaws.com',
+    port=3306,
+    database='root')
     
     status = request.form['mttr']
     incident_id = request.form['incident-id']
